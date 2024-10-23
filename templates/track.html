@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+How to Track - Trackazon
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>How to Track Prices on Amazon</h1>
+
+    <div class="step">
+        <div class="card">
+            <img src="{{ url_for('static', filename='step1.png') }}" alt="Step 1">
+            <div class="card-title">Step 1: Find Your Product</div>
+            <p>Go to Amazon and search for the product you want to track. Copy the URL of the product page.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='step2.png') }}" alt="Step 2">
+            <div class="card-title">Step 2: Enter the Product URL</div>
+            <p>Paste the copied URL into the tracking form on our website.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='step3.png') }}" alt="Step 3">
+            <div class="card-title">Step 3: Set Your Budget</div>
+            <p>Enter your budget. We'll notify you when the price drops below this amount.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='step4.png') }}" alt="Step 4">
+            <div class="card-title">Step 4: Receive Notifications</div>
+            <p>Get instant notifications via email or Telegram when the price changes.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="{{ url_for('index') }}" class="btn-back">Back to Home</a>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif; /* Changed to Poppins for consistency */
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2.5em; /* Increased font size */
+    }
+
+    .step {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Ensures responsive behavior */
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        transition: transform 0.3s;
+        flex: 1 1 250px; /* Flex properties for responsive layout */
+        max-width: 300px; /* Max width for cards */
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+        border-radius: 50%; /* Circular images */
+    }
+
+    .card-title {
+        font-size: 1.5em;
+        color: #007bff;
+        margin-bottom: 10px;
+        font-weight: bold; /* Bold for emphasis */
+    }
+
+    p {
+        color: #666; /* Text color for paragraphs */
+        margin: 0 0 10px; /* Spacing for paragraphs */
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 20px; /* Adjusted to bring it higher */
+        margin-bottom: 40px; /* Added margin-bottom for spacing */
+    }
+
+    .btn-back {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        font-weight: bold; /* Bold text for buttons */
+    }
+
+    .btn-back:hover {
+        background-color: #0056b3;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 2em; /* Decrease h1 font size on smaller screens */
+        }
+        .card {
+            flex: 1 1 100%; /* Stack cards on smaller screens */
+            margin: 10px 0; /* Margin adjustments */
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Dashboard</h1>
+    <p>Welcome, {{ username }}!</p> <!-- Display logged-in username -->
+
+    <div class="grid">
+        <div class="card">
+            <h2 class="card-title">Sales Overview</h2>
+            <canvas id="salesChart"></canvas>
+        </div>
+        <div class="card">
+            <h2 class="card-title">User Engagement</h2>
+            <canvas id="engagementChart"></canvas>
+        </div>
+        <div class="card">
+            <h2 class="card-title">Recent Activities</h2>
+            <ul class="activity-list">
+                <li>User A purchased Product X</li>
+                <li>User B viewed Product Y</li>
+                <li>User C rated Product Z</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a class="btn btn-primary" href="{{ url_for('settings') }}">Go to Settings</a>
+        <a class="btn btn-secondary" href="{{ url_for('index') }}">Back to Home</a>
+        <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a> <!-- Logout button -->
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const salesCtx = document.getElementById('salesChart').getContext('2d');
+    const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+
+    // Sales Chart
+    const salesChart = new Chart(salesCtx, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Sales',
+                data: [30, 50, 75, 100, 60, 90],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Engagement Chart
+    const engagementChart = new Chart(engagementCtx, {
+        type: 'line',
+        data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{
+                label: 'Engagement',
+                data: [15, 25, 40, 35],
+                fill: false,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .grid {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1 1 300px; /* Responsive flex */
+        max-width: 400px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #007bff;
+    }
+
+    .activity-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .activity-list li {
+        background-color: #f9f9f9;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .activity-list li:hover {
+        background-color: #e9ecef;
+    }
+
+    .button-container {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+</style>
+{% endblock %}

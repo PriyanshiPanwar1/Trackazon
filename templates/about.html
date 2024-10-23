@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About - Trackazon
+{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px;">
+    <div class="about" style="text-align: center; padding: 50px 20px;">
+        <h1 style="color: #007bff; font-size: 36px; margin-bottom: 20px;">About Trackazon</h1>
+        <p style="font-size: 18px; color: #333; margin-bottom: 30px;">
+            Trackazon is your go-to Amazon price tracking solution. We help you monitor prices on your favorite products and alert you when they drop below your desired budget. With real-time notifications and price history tracking, you'll never miss a deal!
+        </p>
+        <p style="font-size: 18px; color: #333; margin-bottom: 30px;">
+            Our mission is to empower shoppers to make informed purchasing decisions and save money effortlessly. Join us on your journey to smart shopping!
+        </p>
+    </div>
+</div>
+
+
+
+<style>
+    body {
+        background-color: #f4f4f4; /* Consistent background color */
+    }
+    
+    /* Navbar Styling */
+    .navbar {
+        background-color: #282c34;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar a {
+        color: white;
+        margin-right: 20px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+        color: #ffdd57;
+    }
+
+    .navbar .navbar-brand a {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .about {
+            padding: 20px; /* Adjust padding for smaller screens */
+        }
+
+        .about h1 {
+            font-size: 28px; /* Smaller font size for headings on mobile */
+        }
+
+        .about p {
+            font-size: 16px; /* Smaller font size for paragraphs on mobile */
+        }
+    }
+</style>
+{% endblock %}

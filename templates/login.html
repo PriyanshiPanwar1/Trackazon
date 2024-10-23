@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Trackazon{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 400px; margin: 50px auto; padding: 40px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h2 style="margin-bottom: 20px; color: #007bff; text-align: center;">Login</h2>
+    <form method="POST">
+        <div class="form-group" style="margin-bottom: 20px;"> <!-- Added margin-bottom for spacing -->
+            <input type="text" name="username" placeholder="Username" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;"> <!-- Added margin-bottom for spacing -->
+            <input type="password" name="password" placeholder="Password" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+        </div>
+        <button type="submit" class="btn-primary" style="padding: 15px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; background-color: #007bff; color: white; width: 100%; transition: background-color 0.4s ease, transform 0.2s ease;">
+            Login
+        </button>
+    </form>
+    <div class="footer" style="margin-top: 20px; text-align: center;">
+        <p>New here? <a href="{{ url_for('register') }}">Register now</a></p>
+    </div>
+</div>
+
+<style>
+    .btn-primary {
+        background-color: #007bff; /* Blue background */
+        color: white;
+        padding: 15px 20px; /* Increased padding for more space */
+        border: none;
+        border-radius: 5px; /* Consistent border radius */
+        cursor: pointer;
+        font-size: 18px; /* Slightly larger font size */
+        width: 100%;
+        transition: background-color 0.4s ease, transform 0.2s ease; /* Added transition for smoothness */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: translateY(-2px); /* Lift the button slightly on hover */
+    }
+
+    .btn-primary:active {
+        transform: translateY(1px); /* Press down effect */
+    }
+</style>
+{% endblock %}

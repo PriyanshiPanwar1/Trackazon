@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Track Product - Trackazon
+{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px;">
+    <h1 style="text-align: center; color: #007bff;">Track Product</h1>
+    <div class="form-container" style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 30px; margin-top: 20px;">
+        <form method="POST">
+            <div class="form-group" style="margin-bottom: 20px;">
+                <input type="text" name="url" placeholder="Enter Product URL" required style="padding: 15px; border-radius: 10px; border: 1px solid #ccc; width: 100%; transition: border-color 0.3s;">
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <input type="number" name="budget" placeholder="Enter Budget in ₹" required style="padding: 15px; border-radius: 10px; border: 1px solid #ccc; width: 100%; transition: border-color 0.3s;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="padding: 10px 15px; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; background-color: #007bff; color: white; transition: background-color 0.3s;">Check Price</button>
+        </form>
+
+        <div class="result" style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px;">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="notification" style="color: red; font-weight: bold;">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% if result %}
+                <h2 style="color: #333; margin-bottom: 10px;">Product Details:</h2>
+                <p>Product Name: <strong>{{ result.title }}</strong></p>
+                <p>Price: <strong>₹{{ result.price }}</strong></p>
+                <p>Should Buy: <strong>{{ 'Yes' if result.should_buy else 'No' }}</strong></p>
+                <img src="{{ url_for('static', filename='price_history.png') }}" alt="Price History" style="width: 100%; height: auto; border-radius: 10px; margin-top: 10px;">
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f4f4; /* Ensure consistency in background color */
+    }
+
+    /* Hover effect for inputs */
+    input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    /* Style for the primary button on hover */
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue for button hover effect */
+    }
+
+    /* Media queries for responsive design */
+    @media (max-width: 768px) {
+        .container {
+            margin: 20px; /* Adjust margins on smaller screens */
+        }
+
+        h1 {
+            font-size: 1.8em; /* Decrease h1 font size */
+        }
+
+        .form-group input {
+            font-size: 14px; /* Adjust input font size */
+        }
+
+        .btn-primary {
+            font-size: 14px; /* Adjust button font size */
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Trackazon{% endblock %}
+
+{% block content %}
+<div class="register-container" style="background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 400px; margin: 50px auto; text-align: center;">
+    <h2 style="margin-bottom: 20px; color: #007bff;">Register</h2>
+    <form method="POST" action="{{ url_for('register') }}">
+        <div class="form-group" style="margin-bottom: 20px;">
+            <input type="text" name="username" placeholder="Username" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+            <input type="password" name="password" placeholder="Password" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+        </div>
+        <button type="submit" class="btn-primary" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; transition: background-color 0.3s ease, transform 0.3s ease; width: 100%;">
+            Register
+        </button>
+    </form>
+    <div class="footer" style="margin-top: 20px;">
+        <p style="font-size: 14px;">Already have an account? <a href="{{ url_for('login') }}" style="color: #007bff; text-decoration: none;">Login here</a></p>
+    </div>
+</div>
+
+<style>
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: 100%;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05); /* Slightly enlarge the button on hover */
+    }
+
+    .btn-primary:active {
+        transform: scale(0.95); /* Shrink the button slightly when clicked */
+    }
+</style>
+{% endblock %}
